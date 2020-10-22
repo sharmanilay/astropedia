@@ -10,7 +10,7 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/login',
+    path: 'login',
     name: 'login',
     component: Login
   },
@@ -23,7 +23,7 @@ const routes = [
     }
   },
   {
-    path: '/home',
+    path: 'home',
     name: 'home',
     component: Home,
     meta: {
@@ -31,7 +31,7 @@ const routes = [
     }
   },
   {
-    path: '/browse/:id',
+    path: 'browse/:id',
     name: 'asteroid-detail',
     component: Asteroid,
     meta: {
@@ -41,14 +41,12 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  mode: 'history',
   base: process.env.BASE_URL,
   routes
 })
 
 router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some(x => x.meta.requiresAuth)
-
   if (requiresAuth && !auth.currentUser) {
     next('/login')
   } else {

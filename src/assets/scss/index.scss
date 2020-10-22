@@ -1,0 +1,169 @@
+@import 'node_modules/bootstrap/scss/bootstrap.scss';
+@import 'node_modules/bootstrap-vue/src/index.scss';
+@import './variables';
+
+
+.app-wrapper {
+  background-color: #000;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  .app {
+    height: 100%;
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.canvas {
+  position: fixed;;
+  height: 100%;
+  top:0;
+  left:0;
+}
+
+.dark-card {
+  background-color: $black;
+}
+
+.main-table {
+  color: white;
+  border-collapse: separate;
+  border-spacing: 0 12px;
+  tbody {
+    tr {
+      border-collapse: separate;
+      overflow: hidden;
+      border-radius: 5px;
+      box-shadow: inset 0px 0px 0 2px #EFF2FF;
+      &.b-table-details {
+        background-color: #FAFAFA !important;
+        box-shadow: none;
+      }
+      &:hover {
+        box-shadow: 0px 0px 0px 1px #EFF2FF;
+      }
+    }
+  }
+  th {
+    font-size: 12px;
+    font-weight: 600;
+    font-family: $montserrat;
+    text-transform: uppercase;
+    padding-bottom: 0;
+    &:focus {
+      outline: 0;
+    }
+  }
+  td {
+    color: white;
+    font-size: 14px;
+    vertical-align: middle;
+  }
+  .reference-cell {
+    padding-left: 32px;
+  }
+  .buyer-cell {
+    max-width: 140px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  .status-cell {
+    min-width: 120px;
+  }
+  .action-buttons {
+    min-width: 9em;
+  }
+}
+
+.table-pagination {
+  .active {
+    .page-link{
+      color: white !important;
+      background-color: $primary !important;
+      border-color: $primary;
+    }
+  }
+  .page-link {
+    border-radius: 5px;
+    margin: 0 2px;
+    color: $primary;
+    background-color: white;
+  }
+}
+
+.table.table-clean, .table-clean .table {
+  th, td {
+    background-color: $black !important;
+    border-top: none;
+  }
+  tbody:before {
+    content: "-";
+    display: block;
+    line-height: 0.2rem;
+    color: transparent;
+}
+  thead {
+    th {
+      color: #FAFAFA !important;
+      font-size: 16px;
+      line-height: 21px;
+      font-family: 'Poppins';
+      padding: 0.5rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.table-clean {
+  table.b-table {
+    border-collapse: separate;
+    border-spacing: 0 12px;
+    & > thead, & > tfoot {
+      & > tr {
+        & > th.sorting {
+          &:before, &:after {
+            content: none;
+          }
+        }
+        & > th.sorting_asc {
+          &:before {
+            right: 0.25em;
+            content: '\2191';
+          }
+        }
+        & > th.sorting_desc {
+          &:after {
+            content: '\2193';
+          }
+        }
+      }
+    }
+  }
+}
+
+$fonts: () !default;
+
+$theme-fonts: map-merge(
+  (
+    "poppins": $poppins,
+    "montserrat": $montserrat,
+    "lato": $lato,
+    "logo": $logo
+  ),
+  $fonts
+);
+
+@for $i from 2 through 10 {
+  .font-#{$i*5} {
+    font-size: $i*5px;
+  }
+}
+@each $font, $value in $theme-fonts {
+  .font-#{$font} {
+    font-family: $value;
+  }
+}
